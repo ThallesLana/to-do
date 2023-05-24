@@ -1,0 +1,37 @@
+# Arquivos gerados pelo Composer
+/vendor
+
+# Arquivos gerados pelas dependências JavaScript
+/node_modules
+
+# Arquivos gerados pelo PHPUnit
+/phpunit.xml
+/tests/coverage
+/tests/phpunit.xml
+
+# Logs de erros e exceções
+/storage/*.log
+/storage/logs/*.log
+
+# Arquivos de ambiente específicos
+.env
+
+# Arquivos gerados pela IDE
+/.idea
+/.vscode
+
+# Arquivos de cache
+/public/css/*.css
+/public/js/*.js
+/public/mix-manifest.json
+
+# Arquivos de sessão e cache
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/framework/down
+
+# Arquivos de backup
+*.bak
+*.swp
