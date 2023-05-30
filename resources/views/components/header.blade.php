@@ -1,4 +1,4 @@
-<link href="{{ asset('css/components/header.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/components/header.css') }}">
 <div>
     <header class="headerComponent">
         <div class="image-header">

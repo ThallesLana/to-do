@@ -8,7 +8,7 @@
                     <input type="text" placeholder="Adicionar novo tarefa"/>
                 </label>
                 <button type="submit" data-testid="add-task-button" onClick={handleCreateNewTask}>
-
+                    <img src="{{ asset('assets/new.svg') }}" alt="new item Icon">
                 </button>
             </div>
         </header>
@@ -23,8 +23,8 @@
                         </label>
                         <p>Teste</p>
                     </div>
-                    <button type="button">
-                        <i class="fa-solid fa-trash"></i>
+                    <button>
+                        <img src="{{ asset('assets/delete.svg') }}" alt="Trash Icon">
                     </button>
                 </li>
             </ul>

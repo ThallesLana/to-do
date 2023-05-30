@@ -10,7 +10,7 @@ section.task-list {
     border-radius: 1rem;
     margin-top: -10rem;
     padding: 70px 60px;
-    filter: drop-shadow(0px 24px 64px rgba(0, 0, 0, 0.20));
+    filter: drop-shadow(0px 24px 64px rgba(0, 0, 0, 0.06));
     width: 50%;
 }
 
@@ -24,7 +24,6 @@ section.task-list header {
 section.task-list header h2 {
     color: var(--text-title);
     font-size: 2.25rem;
-    font-weight: 600;
 }
 
 section.task-list .input-group {
@@ -44,10 +43,6 @@ section.task-list .input-group input {
     border-radius: 8px;
 }
 
-section.task-list .input-group label {
-    padding-right: 10px;
-}
-
 section.task-list .input-group input::placeholder {
     color: var(--text-light);
 }
@@ -61,7 +56,7 @@ section.task-list .input-group button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 8px;
+    padding: 14px;
     transition: filter 0.2s;
 }
 
@@ -149,15 +144,14 @@ section.task-list main ul li div.checkmark:after {
 }
 
 section.task-list main ul li button {
-    font-weight: 600;
-    border-radius: 8px;
+    background: transparent;
     border: 0;
-    background: var(--red);
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 8px;
-    transition: filter 0.2s;
-    /*max-width: 24px ;*/
+}
+
+section.task-list main ul li button svg {
+    color: var(--red);
+}
+
+section.task-list main ul li button:hover svg {
+    filter: brightness(0.5);
 }
