@@ -1,4 +1,4 @@
-<link href="{{ asset('css/components/tasklist.css') }}" rel="stylesheet">
+@vite(['resources/css/components/tasklist.css', 'resources/js/app.js'])
 <div class="task-list">
     <section class="task-list container">
         <header>
