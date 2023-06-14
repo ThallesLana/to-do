@@ -40,4 +40,25 @@ class todo extends Model
         ->get();
     }
 
+    public function checked(
+        $taskId,
+        $isDone
+    ){
+        $todo = todo::find($taskId);
+
+        $todo->done = $isDone;
+
+        $todo->update();
+
+        return response()->json(['message' => 'Task check updated', 'data' => $todo]);
+    }
+
+    public function deleteTask(
+        $taskId
+    ){
+        $todo = todo::find($taskId);
+        $todo->delete();
+
+        return response()->json(['message' => 'Task deleted', 'data' => $todo]);
+    }
 }

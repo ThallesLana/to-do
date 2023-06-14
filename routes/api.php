@@ -22,4 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('todo')->group(function () {
     Route::get('list', [todoController::class, 'list']);
     Route::post('store', [todoController::class, 'store']);
+    Route::put('checked', [todoController::class, 'checked']);
+    Route::delete('delete', [todoController::class, 'deleteTask']);
 });

@@ -25,7 +25,7 @@ class todoController extends Controller
 
     public function list(Request $request) {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'int|required'
+            'user_id' => 'numeric|required'
         ]);
 
         if($validator->fails()) {
@@ -37,5 +37,39 @@ class todoController extends Controller
         );
 
         return response()->json(['todos' => $todo], 201);
+    }
+
+    public function checked(Request $request){
+        $validator = Validator::make($request->all(), [
+            'task_id' => 'numeric|required',
+            'is_done' => 'numeric|required'
+        ]);
+
+        if($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        };
+        $todoModel = new todo();
+        $todo = $todoModel->checked(
+            $request->input('task_id'),
+            $request->input('is_done')
+        );
+
+        return response()->json(['checked' => $todo], 201);
+    }
+
+    public function deleteTask(Request $request){
+        $validator = Validator::make($request->all(), [
+            'task_id' => 'numeric|required'
+        ]);
+
+        if($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        };
+        $todoModel = new todo();
+        $todo = $todoModel->deleteTask(
+            $request->input('task_id')
+        );
+
+        return response()->json(['checked' => $todo], 201);
     }
 }
