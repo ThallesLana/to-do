@@ -16,7 +16,7 @@ function taskList() {
                 // console.log(response.todos);
                 $.each(response.todos, function(index, todo) {
                     // Cria um novo item de lista <li>
-                    var listItem = $('<li id="todo.to_do_id"></li>');
+                    var listItem = $('<li id="' + todo.to_do_id + '"></li>');
 
                     // Cria o conteúdo do item de lista
                     var listItemContent = $('<div></div>');
@@ -28,12 +28,18 @@ function taskList() {
                     checkboxContainer.append(checkbox);
                     checkboxContainer.append('<span class="checkmark"></span>');
 
+                    // Adiciona a classe "completed" se todo.done for igual a 1
+                    if (todo.done === 1) {
+                        listItemContent.addClass('completed');
+                        checkbox.prop('checked', true);
+                    }
+
                     // Cria o texto da tarefa
                     var taskText = $('<p></p>').text(todo.text_to_do);
 
                     // Cria o botão de exclusão
-                    var deleteButton = $('<button></button>');
-                    deleteButton.append('<img src="assets/delete.svg" alt="Trash Icon">');
+                    var deleteButton = $('<button class="deleteTask"></button>');
+                    deleteButton.append('<img src="assets/delete.svg" alt="Trash Icon" id="trash">');
 
                     // Adiciona o conteúdo ao item de lista
                     listItemContent.append(checkboxContainer);
@@ -57,13 +63,74 @@ function isComplete() {
         var div = checkbox.closest('li').find('div');
 
         if (checkbox.is(':checked')) {
-            div.addClass('completed');
+            $.ajax({
+                url: 'api/todo/checked',
+                method: 'PUT',
+                data: {
+                    'task_id' : checkbox.data('todo-id'),
+                    'is_done' : 1
+                },
+                success: function (response) {
+                    div.addClass('completed');
+                }
+            });
         } else {
-            div.removeClass('completed');
+            $.ajax({
+                url: 'api/todo/checked',
+                method: 'PUT',
+                data: {
+                    'task_id' : checkbox.data('todo-id'),
+                    'is_done' : 0
+                },
+                success: function (response) {
+                    div.removeClass('completed');
+                    console.log('undone');
+                }
+            });
         }
     });
 }
+
+function createNewTask() {
+    $('#createNewTask').submit(function (event) {
+        event.preventDefault(); // Impede o envio do formulário
+
+        let textTask = $('#textTask')
+        $.ajax({
+            url: 'api/todo/store',
+            method: 'POST',
+            data: {
+                'text_to_do': textTask.val()
+            },
+            success: function (response) {
+                taskList();
+                textTask.val('');
+            }
+        });
+    })
+}
+
+function deleteTask() {
+    $('ul').on('click', '.deleteTask', function(event) {
+        var listItem = $(this).closest('li');
+        var todoId = listItem.attr('id');
+        $.ajax({
+            url: 'api/todo/delete',
+            method: 'DELETE',
+            data: {
+                'task_id': todoId,
+            },
+            success: function(response) {
+                listItem.remove();
+            }
+        });
+    });
+}
+
+
 $(document).ready(function(){
     taskList();
     isComplete();
+    createNewTask();
+    deleteTask();
 });

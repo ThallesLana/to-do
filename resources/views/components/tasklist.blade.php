@@ -3,14 +3,14 @@
     <section class="task-list container">
         <header>
             <h2>Minhas tarefas<i class="far fa-user"></i></h2>
-            <div class="input-group">
+            <form class="input-group" id="createNewTask">
                 <label>
-                    <input type="text" placeholder="Adicionar novo tarefa"/>
+                    <input required type="text" id="textTask" placeholder="Adicionar novo tarefa"/>
                 </label>
-                <button type="submit" data-testid="add-task-button" onClick={handleCreateNewTask}>
-                    <img src="{{ asset('assets/new.svg') }}" alt="new item Icon">
+                <button type="submit">
+                    <img src="{{ asset('assets/new.svg') }}" alt="new item Icon" id="new">
                 </button>
-            </div>
+            </form>
         </header>
 
         <main>
@@ -23,7 +23,7 @@
                         </label>
                         <p>Teste</p>
                     </div>
-                    <button>
+                    <button id="deleteTask">
                         <img src="{{ asset('assets/delete.svg') }}" alt="Trash Icon">
                     </button>
                 </li>

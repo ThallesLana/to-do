@@ -63,6 +63,7 @@ section.task-list .input-group button {
     align-items: center;
     padding: 8px;
     transition: filter 0.2s;
+    cursor: pointer;
 }
 
 section.task-list .input-group button:hover {
@@ -160,5 +161,109 @@ section.task-list main ul li button {
     align-items: center;
     padding: 8px;
     transition: filter 0.2s;
-    /*max-width: 24px ;*/
+    cursor: pointer;
+}
+
+@media (min-width: 641px) and (max-width: 1140px) {
+    section.task-list .input-group input {
+        padding: 12px 36px;
+    }
+
+    section.task-list main ul li label.checkbox-container input {
+        cursor: pointer;
+        height: 19px;
+    }
+
+    section.task-list header h2 {
+        font-size: 2.2rem;
+    }
+
+    section.task-list {
+        width: 90%;
+    }
+
+    section.task-list {
+        padding: 70px 26px;
+    }
+}
+
+@media (min-width: 476px) and (max-width: 640px) {
+
+    section.task-list header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    section.task-list main {
+        margin-top: 2rem;
+    }
+
+    #new {
+        width: 20px;
+    }
+    #trash {
+        width: 20px;
+    }
+
+    section.task-list .input-group input {
+        padding: 12px 36px;
+    }
+
+    section.task-list main ul li label.checkbox-container input {
+        cursor: pointer;
+        height: 19px;
+    }
+
+    section.task-list header h2 {
+        font-size: 1.9rem;
+        padding-bottom: 15px;
+    }
+
+    section.task-list {
+        width: 90%;
+    }
+
+    section.task-list {
+        padding: 70px 26px;
+    }
+}
+
+@media (max-width: 475px) {
+    section.task-list header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
+    section.task-list .input-group input {
+        padding: 12px 12px;
+    }
+
+    section.task-list main ul li label.checkbox-container input {
+        cursor: pointer;
+        height: 19px;
+    }
+
+    section.task-list main {
+        margin-top: 1.7rem;
+    }
+
+    section.task-list header h2 {
+        font-size: 1.7rem;
+        padding-bottom: 15px;
+    }
+
+    section.task-list {
+        width: 90%;
+    }
+
+    section.task-list {
+        padding: 70px 26px;
+    }
+}
+
+@media (max-width: 360px){
+    section.task-list main ul li div p {
+        font-size: 1.2rem;
+    }
 }
